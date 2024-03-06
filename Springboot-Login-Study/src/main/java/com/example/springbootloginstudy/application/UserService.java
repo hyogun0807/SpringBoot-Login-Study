@@ -3,6 +3,7 @@ package com.example.springbootloginstudy.application;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.springbootloginstudy.dto.JoinForm;
 import com.example.springbootloginstudy.entity.User;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class UserService {
 
 	private final UserRepository userRepository;
