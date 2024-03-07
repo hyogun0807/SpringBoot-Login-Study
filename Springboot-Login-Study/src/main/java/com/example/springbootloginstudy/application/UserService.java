@@ -29,7 +29,7 @@ public class UserService {
 	}
 
 	// 로그인 기능 구현
-	public User signIn(JoinForm joinForm) {
+	public User login(JoinForm joinForm) {
 		Optional<User> optionalUser = userRepository.findByLoginId(joinForm.getLoginId());
 
 		if(optionalUser.isEmpty()) {
@@ -45,12 +45,12 @@ public class UserService {
 	}
 
 	// 회원가입 기능
-	public void signUp(JoinForm joinForm) {
+	public void join(JoinForm joinForm) {
 		userRepository.save(joinForm.toEntity());
 	}
 
 	// UserId를 받아 User return -> 인증, 인가 시 사용
-	public User getUserInfo(Long userId) {
+	public User getLoginUser(Long userId) {
 		if(userId == null) {
 			return null;
 		}
