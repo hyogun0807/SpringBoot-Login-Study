@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class JoinForm {
+public class JoinRequest {
 
 	private String loginId;
 	private String password;

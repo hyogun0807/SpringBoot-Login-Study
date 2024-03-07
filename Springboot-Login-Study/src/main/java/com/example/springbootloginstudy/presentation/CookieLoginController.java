@@ -2,8 +2,8 @@ package com.example.springbootloginstudy.presentation;
 
 import com.example.springbootloginstudy.application.UserService;
 import com.example.springbootloginstudy.domain.UserRole;
-import com.example.springbootloginstudy.dto.JoinForm;
-import com.example.springbootloginstudy.dto.LoginForm;
+import com.example.springbootloginstudy.dto.JoinRequest;
+import com.example.springbootloginstudy.dto.LoginRequest;
 import com.example.springbootloginstudy.entity.User;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.EnumMap;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,12 +42,12 @@ public class CookieLoginController {
 
     @GetMapping("/join")
     public String joinPage(Model model) {
-        model.addAttribute("joinForm", new JoinForm());
+        model.addAttribute("joinForm", new JoinRequest());
         return "cookie-login/join";
     }
 
     @PostMapping("/join")
-    public String join(@Valid @ModelAttribute JoinForm joinForm, BindingResult bindingResult) {
+    public String join(@Valid @ModelAttribute JoinRequest joinForm, BindingResult bindingResult) {
 
         // 중복 로그인 아이디 체크
         if (userService.checkDuplicatedLoginId(joinForm.getLoginId())) {
@@ -80,12 +78,12 @@ public class CookieLoginController {
 
     @GetMapping("/login")
     public String loginPage(Model model) {
-        model.addAttribute("loginFrom", new LoginForm());
+        model.addAttribute("loginFrom", new LoginRequest());
         return "cookie-login/login";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute LoginForm loginForm, BindingResult bindingResult
+    public String login(@ModelAttribute LoginRequest loginForm, BindingResult bindingResult
                         , HttpServletResponse response) {
         User user = userService.login(loginForm);
 

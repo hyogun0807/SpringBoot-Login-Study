@@ -2,11 +2,11 @@ package com.example.springbootloginstudy.application;
 
 import java.util.Optional;
 
-import com.example.springbootloginstudy.dto.LoginForm;
+import com.example.springbootloginstudy.dto.LoginRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.springbootloginstudy.dto.JoinForm;
+import com.example.springbootloginstudy.dto.JoinRequest;
 import com.example.springbootloginstudy.entity.User;
 import com.example.springbootloginstudy.repository.UserRepository;
 
@@ -30,7 +30,7 @@ public class UserService {
 	}
 
 	// 로그인 기능 구현
-	public User login(LoginForm loginForm) {
+	public User login(LoginRequest loginForm) {
 		Optional<User> optionalUser = userRepository.findByLoginId(loginForm.getLoginId());
 
 		if(optionalUser.isEmpty()) {
@@ -46,7 +46,7 @@ public class UserService {
 	}
 
 	// 회원가입 기능
-	public void join(JoinForm joinForm) {
+	public void join(JoinRequest joinForm) {
 		userRepository.save(joinForm.toEntity());
 	}
 
