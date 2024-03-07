@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Login Test</title>
+</head>
+<body>
+<div>
+    <h1><a href="/cookie-login">쿠키 로그인</a></h1> <hr/>
+    <h2>회원 가입</h2>
+    <form th:method="post" th:action="@{/cookie-login/join}" th:object="${joinForm}">
+        <div>
+            <!-- 여기에 폼 필드들을 추가하세요 -->
+        </div>
+    </form>
+</div>
+</body>
+</html>
