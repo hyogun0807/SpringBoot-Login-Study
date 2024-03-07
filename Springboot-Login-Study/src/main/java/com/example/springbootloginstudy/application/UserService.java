@@ -2,6 +2,7 @@ package com.example.springbootloginstudy.application;
 
 import java.util.Optional;
 
+import com.example.springbootloginstudy.dto.LoginForm;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,8 +30,8 @@ public class UserService {
 	}
 
 	// 로그인 기능 구현
-	public User login(JoinForm joinForm) {
-		Optional<User> optionalUser = userRepository.findByLoginId(joinForm.getLoginId());
+	public User login(LoginForm loginForm) {
+		Optional<User> optionalUser = userRepository.findByLoginId(loginForm.getLoginId());
 
 		if(optionalUser.isEmpty()) {
 			return null;
@@ -38,7 +39,7 @@ public class UserService {
 
 		User user = optionalUser.get();
 
-		if(!user.getPassword().equals(joinForm.getPassword())) {
+		if(!user.getPassword().equals(loginForm.getPassword())) {
 			return null;
 		}
 		return user;
