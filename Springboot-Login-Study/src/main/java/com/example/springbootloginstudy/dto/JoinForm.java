@@ -15,6 +15,7 @@ public class JoinForm {
 	private String loginId;
 	private String password;
 	private String nickname;
+	private String passwordCheck;
 
 	public User toEntity() {
 		return User.builder()
