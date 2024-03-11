@@ -22,12 +22,23 @@ repositories {
 }
 
 dependencies {
+
+    // DB
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Spring Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    runtimeOnly 'com.mysql:mysql-connector-j'
 
     compileOnly 'org.projectlombok:lombok'
 
