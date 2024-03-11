@@ -4,9 +4,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.springbootloginstudy.application.UserService;
 import com.example.springbootloginstudy.dto.JoinRequest;
@@ -18,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/security-login")
 public class SecurityLoginController {
 
 	private final UserService userService;
@@ -50,8 +53,24 @@ public class SecurityLoginController {
 		model.addAttribute("loginType", "security-login");
 		model.addAttribute("pageName", "Security 로그인");
 
+		// // loginId 중복 체크
+		// if(userService.checkDuplicatedLoginId(joinRequest.getLoginId())) {
+		// 	return "join";
+		// }
 		// loginId 중복 체크
 		if(userService.checkDuplicatedLoginId(joinRequest.getLoginId())) {
+			bindingResult.addError(new FieldError("joinRequest", "loginId", "로그인 아이디가 중복됩니다."));
+		}
+		// 닉네임 중복 체크
+		if(userService.checkDuplicatedNickname(joinRequest.getNickname())) {
+			bindingResult.addError(new FieldError("joinRequest", "nickname", "닉네임이 중복됩니다."));
+		}
+		// password와 passwordCheck가 같은지 체크
+		if(!joinRequest.getPassword().equals(joinRequest.getPasswordCheck())) {
+			bindingResult.addError(new FieldError("joinRequest", "passwordCheck", "바밀번호가 일치하지 않습니다."));
+		}
+
+		if(bindingResult.hasErrors()) {
 			return "join";
 		}
 
