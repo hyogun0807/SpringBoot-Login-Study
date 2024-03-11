@@ -17,10 +17,21 @@ public class JoinRequest {
 	private String nickname;
 	private String passwordCheck;
 
+	// 비밀번호 미암호화
 	public User toEntity() {
 		return User.builder()
 			.loginId(this.loginId)
 			.password(this.password)
+			.nickname(this.nickname)
+			.userRole(UserRole.USER)
+			.build();
+	}
+
+	// 비밀번호 암호화
+	public User toEntity(String encodedPassword) {
+		return User.builder()
+			.loginId(this.loginId)
+			.password(encodedPassword)
 			.nickname(this.nickname)
 			.userRole(UserRole.USER)
 			.build();

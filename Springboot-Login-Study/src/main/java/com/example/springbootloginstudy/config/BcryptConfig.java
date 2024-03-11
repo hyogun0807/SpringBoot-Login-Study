@@ -2,12 +2,13 @@ package com.example.springbootloginstudy.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-public class BcryptPasswordEncoder {
+public class BcryptConfig {
 
 	@Bean
-	public BcryptPasswordEncoder passwordEncoder() {
-		return new BcryptPasswordEncoder();
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }
