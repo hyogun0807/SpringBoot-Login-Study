@@ -1,12 +1,22 @@
 spring:
-  # DB ?? ?? ??
+  # DB 접속 정보 저장
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/loginStudyDB
     username: root
     password: hg1234
-  # JPA ??
+  # JPA 설정
   jpa:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+
+    # OAuth 로그인
+    security:
+      oauth2:
+        client:
+          registration:
+            google:
+              client-id: Environment Variables에 작성
+              client-secret: Environment Variables에 작성
+              scope: Environment Variables에 작성
