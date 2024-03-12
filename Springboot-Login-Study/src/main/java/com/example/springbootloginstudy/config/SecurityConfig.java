@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.example.springbootloginstudy.auth.MyAccessDeniedHandler;
+import com.example.springbootloginstudy.auth.MyAuthenticationEntryPoint;
 import com.example.springbootloginstudy.domain.UserRole;
 
 @Configuration
@@ -46,10 +48,14 @@ public class SecurityConfig {
 
 			.logout((logout) -> logout
 				.logoutSuccessUrl("/security-login/logout")
-				.invalidateHttpSession(true).deleteCookies());
+				.invalidateHttpSession(true).deleteCookies("JSESSIONID"));
+
+		// http
+		// 	.exceptionHandling(authenticationManager -> authenticationManager
+		// 		.authenticationEntryPoint(new MyAuthenticationEntryPoint())
+		// 		.accessDeniedHandler(new MyAccessDeniedHandler()));
+
 
 		return http.build();
 	}
 }
-
-// antMatcher -> requestMatcher
