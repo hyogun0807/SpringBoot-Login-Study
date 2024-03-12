@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig2 {
+public class SecurityConfig {
 
 	private final UserService userService;
 	private static String secretKey = "my-secret-key-123123";
