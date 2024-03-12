@@ -50,8 +50,7 @@ public class SecurityLoginController {
 
 	@PostMapping("/join")
 	public String join(@Valid @ModelAttribute JoinRequest joinRequest, BindingResult bindingResult, Model model) {
-		model.addAttribute("loginType", "security-login");
-		model.addAttribute("pageName", "Security 로그인");
+
 
 		// // loginId 중복 체크
 		// if(userService.checkDuplicatedLoginId(joinRequest.getLoginId())) {

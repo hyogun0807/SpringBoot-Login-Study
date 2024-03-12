@@ -26,11 +26,17 @@ public class User {
 
 	private UserRole userRole;
 
+	// OAuth 로그인에 사용
+	private String provider;
+	private String providerId;
+
 	@Builder
-	private User(String loginId, String password, String nickname, UserRole userRole) {
+	private User(String loginId, String password, String nickname, String provider, String providerId, UserRole userRole) {
 		this.loginId = loginId;
 		this.password = password;
 		this.nickname = nickname;
+		this.provider = provider;
+		this.providerId = providerId;
 		this.userRole = userRole;
 	}
 }
