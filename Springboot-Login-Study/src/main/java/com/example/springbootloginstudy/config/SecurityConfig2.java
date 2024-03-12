@@ -14,7 +14,7 @@ import com.example.springbootloginstudy.domain.UserRole;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class SecurityConfig1234 {
+public class SecurityConfig2 {
 
 
 	@Bean
